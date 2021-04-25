@@ -7,9 +7,68 @@
     <title>Vue.js (1)</title>
 </head>
 <body>
-    
-    
+
+    <div id="app_5">
+        <input type="text" v-model = "fname">
+        <br>
+        <input type="text" v-model = "lname">
+        <p>{{name}}</p>
+    </div>
+
+    <!-- <div id="app_">
+        {{message}}
+    </div> -->
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    
+    <!-- class-5 -->
+    <script type="text/javascript">
+        var vue = new Vue({
+            
+            el: '#app_5',
+            data:{
+                fname: 'jess',
+                lname: 'hanzo',
+                name: ''
+            },
+            watch: {
+                fname: function(){
+                    return this.name = this.fname + ' ' + this.lname
+                },
+
+                lname: function(){
+                    return this.name = this.fname + ' ' + this.lname
+                }
+            },
+
+        });
+    </script>
+
+    <!-- class-4 -->
+    <!-- <script type="text/javascript">
+
+        var vue = new Vue({
+
+            el:'#app_4',
+            data:{
+                message: "Hello People"
+            },
+            created: function(){
+                return console.log("don't know what I am doing : created")
+            }, 
+            mounted: function(){
+                return console.log("don't know what I am doing : mounted")
+            },
+            update: function(){
+                return console.log("don't know what I am doing : update")
+            },
+            destroyed: function(){
+                return console.log("don't know what I am doing : destroyed")
+            },
+        });
+
+    </script> -->
+    
     
 </body>
 </html>
