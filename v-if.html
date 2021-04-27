@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+    <div class="container py-5" id="app">
+        <div v-if="destroy && button==1" class="alert alert-warning" >
+            Destroy this shitty vue.js
+        </div>
+        <div v-else-if="!destroy && button==0" class="alert alert-success" >
+            Save this shitty vue.js
+        </div>
+        <div v-else class="alert alert-success" >
+            fuck this shit
+        </div>
+        <button v-if="button==1" class="btn btn-success" @click="destroy = false, button= 0">
+            next to 2
+        </button>
+        <button v-if="button==0" class="btn btn-danger" @click="destroy = true, button= 1">
+            back to 1
+        </button> 
+        <br><br><br><br>
+        <button  class="btn btn-danger" @click="button= 2">
+            go dark
+        </button> 
+        
+    </div>
+
+    <script>
+        var vue =new Vue({
+            el:'#app',
+            data:{
+                record: [],
+                destroy: true,
+                button: 1
+
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-for</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div class="container py-5" id="app">
+        <ul class="list-group">
+            
+            <!-- [1] print a loop -->
+
+            <!-- <li class="list-group-item" v-for="i in 10">
+                {{'List ' + i}}
+            </li> -->
+
+            <!-- [2] print a array -->
+
+            <!-- <li class="list-group-item" v-for="i in array">
+                {{ i }}
+            </li> -->
+
+            <!-- [3] print multiple array -->
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(i, index) of array">
+                {{ i }}
+                /* in an array one can get 3 item in order value, index, key (if any) */
+                {{values[index]}}
+                
+            </li> -->
+
+            <!-- [4] print array with key value -->
+            <!-- <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(i, index, key) of array">
+                {{ index + "  " + key +"  " + i }}
+            </li> -->
+        </ul>
+        <!-- [5] multiple object array -->
+        <table class="table tablee-bordered">
+            <tr>
+                <th>name</th>
+                <th>github</th>
+                <th>stack</th>
+                <th>overall</th>
+            </tr>
+
+            <tr v-for=" i in array">
+                <th>{{i.name}}</th>
+                <th>{{i.github}}</th>
+                <th>{{i.stack}}</th>
+                <th>{{i.overall}}</th>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                array:[
+                    {name: "array_1", github: null, stack: 100, overall:100},
+                    {name: "array_2", github: 100, stack: 92, overall:100},
+                    {name: "array_3", github: null, stack: 100, overall:100},
+                    {name: "array_4", github: 100, stack: 90, overall:100},
+                    {name: "array_5", github: null, stack: 99, overall:100},
+                    
+                ]
+            }
+        })
+    </script>
+
+    <!-- used for [4] -->
+    <!-- <script>
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                array:{
+                "array_1": 10, //format is {index : item}
+                "array_2": 20,
+                "array_3": 30,
+                "array_4": 40,
+                "array_5": 50,
+                "array_6": 60,
+                }
+                
+            }
+
+        });
+    </script> -->
+
+    <!-- used for [1], [2] & [3] -->
+    <!-- <script>
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                array: [ "array_1", "array_2", "array_3", "array_4", "array_5", "array_6",],
+                values: [ "10", "20", "30", "40", "50", "60",]
+            }
+        });
+    </script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
