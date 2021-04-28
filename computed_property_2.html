@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Computed Property 2</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <style media="screen">
+        .sort-control {
+            cursor: pointer;
+        }
+
+        .ascending::after {
+            content: "\25b2";
+        }
+
+        .descending::after {
+            content: "\25bc";
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5" id="app">
+        <h2>Top 10 Frameworks</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th @click="toggle" :class="['sort_ctrl',sort_type ]">Score</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr v-for="p in show">
+                    <th>{{p.name}}</th>
+                    <th>{{p.score}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                point:[
+                    {name:'Laravel', score:'99'},
+                    {name:'Asp.net', score:'199'},
+                    {name:'Node.js', score:'99'},
+                ],
+                order:1
+            },
+            computed:{
+                show(){
+                    return this.point.sort((a, b)=> (a.score - b.score) * this.order);
+                },
+                sort_type(){
+                    return this.order === 1? 'ascending': 'descending';
+                }
+            },
+            methods: {
+                toggle(){
+                    return this.order *= -1;
+                }
+            },
+
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
