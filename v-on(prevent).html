@@ -17,37 +17,22 @@
         <ul class="list-group">
             <li v-for="i in array" class="list-group-item d-flex justify-content-between align-items-center">
                 {{i.name}}
-                
-                <!-- <button v-on:click="i.votes+=1" class="btn btn-primary">
-                    increase
-                    <span class="badge badge-primary badge-pill">{{i.votes}}</span>
-                </button> -->
 
                 <button v-on:click="increase(i)" class="btn btn-primary">
                     increase
                     <span class="badge badge-primary badge-pill">{{i.votes}}</span>
                 </button>
-
             </li>
         </ul>
-
-        <!-- {{/* 2 ways to call click function: 1-"v-on:click" 2-"@click" */}}
-
-        <button v-on:click="count += 1">    +1  </button> <span>    In incrementing with {{ count }}</span>
-
-        <br> <br>
-
-        {{/* using method*/}}
-        <button v-on:click="increment">    +1  </button> <span>    In incrementing with {{ counter }}</span>
-
-        <br> <br>
-
-        <a href="sdkiufhsd" @click="increment">+1</a> <span>    In incrementing with {{ counter }}</span>
-
-        <br> <br>
-
-        <input type="text" v-on:keyup.ctrl.v="restriction"> -->
-
+        <br>
+        <form v-on:submit.prevent="handleSubmit">
+            <div class="input-group">
+              <input v-model="input" type="text" class="form-control" placeholder="Enter Your another favorite Framework">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Submit</button>
+              </div>
+            </div>
+        </form>
     </div>
 
     <script type="text/javascript">
@@ -60,22 +45,22 @@
             {name: "array_1", votes:0},
             {name: "array_2", votes:0},
             {name: "array_3", votes:0},
-            ]
+            ],
+            input:''
         },
 
         methods: {
 
             increase(i){
                 i.votes++;
+            },
+            handleSubmit () {
+                this.array.push({
+                    name: this.input,
+                    votes: 0
+                }),
+                this.input = ''
             }
-
-            // increment: function(prevent) {
-            //     prevent.preventDefault();
-            //     return this.counter += 1;
-            // },
-            // restriction(){
-            //     alert ("ctrl+v is not allowed");
-            // }
         }
     });
 
